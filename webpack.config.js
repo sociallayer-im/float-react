@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 console.log('NODE_ENV', process.env.NODE_ENV)
 module.exports = {
   mode: process.env.NODE_ENV,
-  devtool: 'inline-source-map',
+  // devtool: 'inline-source-map',
   entry: {
     injectTwitter: join(__dirname, './src/contentscript/injectTwitter/index.tsx'),
     injectSola: join(__dirname, './src/contentscript/injectSola/index.ts'),

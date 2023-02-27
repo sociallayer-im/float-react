@@ -19,7 +19,7 @@ export async function getBadgeletListByUserID (solaUserID: number) {
         list = list.filter(item => {
             return item.status !== 'rejected'
         })
-        return list.slice(0, 4)
+        return list.slice(0, 5)
     } catch (e) {
         console.log(e.message)
         return []

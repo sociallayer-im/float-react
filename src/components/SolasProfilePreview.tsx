@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import config from "../config";
 
-export interface ProfileDropdownProps {
+export interface SolasProfilePreviewProps {
     avatarURL: string
     domain: string,
-    badgeList: any[]
+    badgeList: any[],
+    markImg?: string
 }
 
-function ProfileDropdown (props: ProfileDropdownProps) {
+function SolasProfilePreview (props: SolasProfilePreviewProps) {
     const { avatarURL, domain, badgeList } = props
 
     const [showList, setShowList] = useState(false)
@@ -15,7 +16,7 @@ function ProfileDropdown (props: ProfileDropdownProps) {
     return (
         <div className="solas-preview">
             <div className='bg'></div>
-            <img className='avatar' src={avatarURL} alt=""/>
+            <img className='avatar' src={ avatarURL } alt=""/>
             <div className='userName'>{ domain.split('.')[0] }</div>
             <a className='domain'>{ domain }</a>
             <div className='badge-list'>
@@ -29,11 +30,17 @@ function ProfileDropdown (props: ProfileDropdownProps) {
                 ))
                 }
             </div>
+
+            {props.markImg ?
+                <a className='view-btn' target='_blank' href={`${config.solaDomain}/profile/${domain.split('.')[0]}`}>View</a>
+                : false
+            }
+
             <div className='footer-mark'>
-                <img src="./images/footer_mark.png" alt=""/>
+                <img src={ props.markImg ? props.markImg : "./images/footer_mark.png"} alt=""/>
             </div>
         </div>
     )
 }
 
-export default ProfileDropdown
+export default SolasProfilePreview

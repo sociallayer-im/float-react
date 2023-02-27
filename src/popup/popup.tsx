@@ -84,22 +84,28 @@ export function FloatPopup (props: FloatPopupProps) {
 
         <div className="connected">
             <div className="title">Connect</div>
-            <div className="connected-item">
-                <div className="info">
-                    <img src="./images/twitter.svg" alt="" />
+            { twitterID ?
+                <div className="connected-item">
+                    <div className="info">
+                        <img src="./images/twitter.svg" alt="" />
                         <div className="info-name">
                             <div className="sola-name">{ domain.split('.')[0] }</div>
                             <div className="social-name">{ twitterID }</div>
                         </div>
+                    </div>
+                    <div className="actions">
+                        <button>
+                            <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 10L13 14C13 14.3978 12.842 14.7794 12.5607 15.0607C12.2794 15.342 11.8978 15.5 11.5 15.5L2.5 15.5C2.10217 15.5 1.72064 15.342 1.43934 15.0607C1.15803 14.7794 0.999999 14.3978 0.999999 14L0.999999 10M4 4.5L7 1.5M7 1.5L10 4.5M7 1.5L7 11.25" stroke="#5A596E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <div className="actions">
-                    <button>
-                        <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13 10L13 14C13 14.3978 12.842 14.7794 12.5607 15.0607C12.2794 15.342 11.8978 15.5 11.5 15.5L2.5 15.5C2.10217 15.5 1.72064 15.342 1.43934 15.0607C1.15803 14.7794 0.999999 14.3978 0.999999 14L0.999999 10M4 4.5L7 1.5M7 1.5L10 4.5M7 1.5L7 11.25" stroke="#5A596E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
+                :
+                <div className="connected-item" style={{ color: "#999" }}>
+                        No Twitter ID connected
                 </div>
-            </div>
+            }
         </div>
         <div className='badge-show'>
             <div className="title">

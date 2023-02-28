@@ -23,7 +23,7 @@ function ProfileDropdown (props: ProfileDropdownProps) {
             auth_token: '',
             user_domain: '',
             avatar: '',
-            login_twitter_id: ''
+            bind_twitter_id: ''
         }).then(() => {
             props.onLogOut()
             setShowList(false)

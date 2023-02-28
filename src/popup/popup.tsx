@@ -7,12 +7,13 @@ import { getBadgeletListByUserID } from '../utils/useSola'
 import SolasProfilePreview from '../components/SolasProfilePreview'
 
 async function init () {
-    const storage = await chrome.storage.local.get(['user_id', 'user_domain', 'auth_token', 'avatar', 'login_twitter_id'])
+    const storage = await chrome.storage.local.get(['user_id', 'user_domain', 'auth_token', 'avatar', 'bind_twitter_id', 'login_twitter_id'])
     const root = ReactDOM.createRoot(document.getElementById('app'))
     const props: FloatPopupProps = {
         domain: storage.user_domain,
         avatar: storage.avatar,
-        twitterID: storage.login_twitter_id,
+        loginTwitterID: storage.login_twitter_id,
+        bindTwitterID: storage.bind_twitter_id,
         authToken: storage.auth_token,
         userID: Number(storage.user_id)
     }
@@ -26,7 +27,8 @@ init()
 interface FloatPopupProps {
     domain: string,
     avatar: string,
-    twitterID: string,
+    loginTwitterID: string,
+    bindTwitterID: string,
     authToken: string,
     userID: number
 }
@@ -35,14 +37,39 @@ export function FloatPopup (props: FloatPopupProps) {
 
     const [domain, setDomain] = useState(props.domain)
     const [avatar, setAvatar] = useState(props.avatar)
-    const [twitterID, setTwitterID] = useState(props.twitterID)
+    const [loginTwitterID, setLoginTwitterID] = useState(props.loginTwitterID)
+    const [bindTwitterID, setBindTwitterID] = useState(props.bindTwitterID)
     const [authToken, setAuthToken] = useState(props.authToken)
     const [userID, setUserID] = useState(props.userID)
     const [badgeList, setBadgeList] = useState([])
     const [showPreview, setShowPreview] = useState(false)
 
     useEffect(() => {
+
+        function getCurrentTabId() {
+            return new Promise((resolve, reject) => {
+                chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+                    resolve(tabs.length ? tabs[0].id : null)
+                })
+            })
+        }
+
+        async function getLoginTwitter () {
+            const tabId: any = await getCurrentTabId()
+            if (tabId) {
+                chrome.tabs.sendMessage(tabId,{ type:'GET_LOGIN_TWITTER_ID' }, function(loginTwitterId) {
+                    if (loginTwitterId) {
+                        setLoginTwitterID(loginTwitterId)
+                        chrome.storage.local.set( {'login_twitter_id': loginTwitterId})
+                    }
+                })
+            }
+        }
+
+        getLoginTwitter()
+
         window.addEventListener("message", profileChange, false)
+        window.postMessage({ type:'GET_LOGIN_TWITTER_ID' }, '*')
 
 
         async function getBadge () {
@@ -59,9 +86,14 @@ export function FloatPopup (props: FloatPopupProps) {
     const reset = () => {
         setDomain('')
         setAvatar('')
-        setTwitterID('')
+        setBindTwitterID('')
         setAuthToken('')
         setUserID('')
+    }
+
+    const burnLoginTwitterId  = () => {
+        setLoginTwitterID(null)
+        chrome.storage.local.set( {'login_twitter_id': ''})
     }
 
     const loginView = <div id="login-view">
@@ -84,26 +116,25 @@ export function FloatPopup (props: FloatPopupProps) {
 
         <div className="connected">
             <div className="title">Connect</div>
-            { twitterID ?
+            { loginTwitterID ?
                 <div className="connected-item">
                     <div className="info">
                         <img src="./images/twitter.svg" alt="" />
                         <div className="info-name">
                             <div className="sola-name">{ domain.split('.')[0] }</div>
-                            <div className="social-name">{ twitterID }</div>
+                            <div className="social-name">@{ loginTwitterID }</div>
                         </div>
                     </div>
                     <div className="actions">
-                        <button>
-                            <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 10L13 14C13 14.3978 12.842 14.7794 12.5607 15.0607C12.2794 15.342 11.8978 15.5 11.5 15.5L2.5 15.5C2.10217 15.5 1.72064 15.342 1.43934 15.0607C1.15803 14.7794 0.999999 14.3978 0.999999 14L0.999999 10M4 4.5L7 1.5M7 1.5L10 4.5M7 1.5L7 11.25" stroke="#5A596E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
+                        { loginTwitterID && (loginTwitterID !== bindTwitterID) ?
+                            <a href={`${config.solaDomain}/twitter-verify`} target='_blank' className='verify-twitter-btn'>Verify via Twitter</a>
+                            : <div className='verified-status'><span className='mark'></span><span>Verified</span></div>
+                        }
                     </div>
                 </div>
                 :
                 <div className="connected-item" style={{ color: "#999" }}>
-                        No Twitter ID connected
+                        <div>No Twitter ID connected. <a href='https://twitter.com/i/flow/login' target='_blank'> Go to login</a></div>
                 </div>
             }
         </div>
@@ -156,7 +187,7 @@ export function FloatPopup (props: FloatPopupProps) {
         if (event.data.type && (event.data.type === "PROFILE_CHANGE")) {
             setDomain(event.data.user_domain)
             setAvatar(event.data.avatar)
-            setTwitterID(event.data.login_twitter_id)
+            setBindTwitterID(event.data.bind_twitter_id)
             setAuthToken(event.data.auth_token)
             setUserID(event.data.user_id)
         }

@@ -425,3 +425,49 @@ body {
     width: auto;
     height: 24px;
 }
+
+.verify-twitter-btn {
+    width: 99px;
+    height: 27px;
+    border-radius: 4px;
+    line-height: 27px;
+    color: #0FA2FD;
+    border: 1px solid  #0FA2FD;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+}
+
+.verified-status {
+    color: #585E65;
+    font-size: 12px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.verified-status .mark {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border: 1px solid #23DE1F;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 6px;
+}
+
+.verified-status .mark:before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: #23DE1F;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    border-radius: 50%;
+
+}

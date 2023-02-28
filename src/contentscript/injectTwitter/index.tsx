@@ -207,3 +207,32 @@ function InjectSolasAndLensPreviewInTwitterProfile () {
 }
 
 document.addEventListener('DOMSubtreeModified', InjectSolasAndLensPreviewInTwitterProfile)
+
+document.addEventListener('DOMSubtreeModified', getLoginTwitterId)
+function getLoginTwitterId() {
+   const twitterProfileBtn = document.querySelector('a[data-testid="AppTabBar_Profile_Link"]')
+   if (twitterProfileBtn) {
+       const twitterId = twitterProfileBtn.getAttribute('href').replace('/', '')
+       window.postMessage({ type:'LOGIN_TWITTER_ID', loginTwitterID: twitterId}, '*')
+       return twitterId
+   }
+
+   return null
+}
+
+// window.addEventListener('message', function(event) {
+//     console.log(event.data)
+//     if (event.data.type === 'GET_LOGIN_TWITTER_ID') {
+//         alert('GET_LOGIN_TWITTER_ID')
+//         getLoginTwitterId()
+//     }
+// })
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    console.log('receive message: ')
+    console.log(request);
+    const id = getLoginTwitterId()
+    console.log('login twitter id:' ,id)
+    sendResponse(id)
+})
+

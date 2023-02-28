@@ -18,7 +18,7 @@ window.addEventListener("message", async (event) => {
         console.log('profile', profile)
         await chrome.storage.local.set({
             avatar: profile.image_url,
-            login_twitter_id: profile.twitter,
+            bind_twitter_id: profile.twitter,
             user_domain: profile.domain,
         })
 
@@ -26,7 +26,7 @@ window.addEventListener("message", async (event) => {
             user_id: Number(event.data.user_id),
             auth_token: event.data.auth_token,
             avatar: profile.image_url,
-            login_twitter_id: profile.twitter,
+            bind_twitter_id: profile.twitter,
             user_domain: profile.domain,
         })
     }
@@ -38,7 +38,7 @@ window.addEventListener("message", async (event) => {
             user_domain: '',
             auth_token: '',
             avatar: '',
-            login_twitter_id: ''
+            bind_twitter_id: ''
         })
 
         profileChange({
@@ -46,7 +46,7 @@ window.addEventListener("message", async (event) => {
             user_domain: '',
             auth_token: '',
             avatar: '',
-            login_twitter_id: ''
+            bind_twitter_id: ''
         })
     }
 

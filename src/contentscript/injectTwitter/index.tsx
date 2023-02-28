@@ -124,7 +124,8 @@ function bindLensPost () {
     if (target2) return
 
     const checkIsShareMenu = target.querySelectorAll('div[role="menuitem"]')
-    if (checkIsShareMenu.length !== 4) return
+    console.log('checkIsShareMenu.length', checkIsShareMenu.length)
+    if (checkIsShareMenu.length > 4 || checkIsShareMenu.length < 3) return
 
     const lensPostBtn = document.createElement('a')
     lensPostBtn.className='lens-post-btn'
@@ -136,7 +137,8 @@ function bindLensPost () {
 function postLens() {
     const a = document.createElement('a')
     // a.setAttribute('href', `https://lenster.xyz/?text=${currPostContent}&via=Float&hashtags=lens,web3,Float`)
-    a.setAttribute('href', `https://lenster.xyz/?text=${currPostContent}&hashtags=lens,web3,Float,twitter`)
+    const precessText = currPostContent.replace(/#/g, '')
+    a.setAttribute('href', `https://lenster.xyz/?text=${precessText}&hashtags=lens,web3,Float,twitter`)
     a.setAttribute('target', '_blank')
     a.click()
 }

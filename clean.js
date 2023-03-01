@@ -9,7 +9,6 @@ async function process () {
     await copy('./src/assets/images', './dist/images')
     await copy('./src/assets/scripts', './dist/scripts')
     await copy('./src/popup/popup.html', './dist/popup.html')
-    await copy('./src/animation', './dist/animation')
 }
 
 process()

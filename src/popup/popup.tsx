@@ -134,7 +134,7 @@ export function FloatPopup (props: FloatPopupProps) {
                 </div>
                 :
                 <div className="connected-item" style={{ color: "#999" }}>
-                        <div>No Twitter ID connected. <a href='https://twitter.com/i/flow/login' target='_blank'> Go to login</a></div>
+                        <div>No Twitter Account connected yet~. <a href='https://twitter.com/i/flow/login' target='_blank'> Go to login </a></div>
                 </div>
             }
         </div>

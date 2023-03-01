@@ -11,7 +11,7 @@
     "clean": "node clean.js",
     "prebuild": "npm run clean",
     "prewatch": "npm run clean",
-    "zip": "bestzip extension.zip dist/*"
+    "zip": "cd dist && bestzip ../Float.zip *"
   },
   "keywords": [],
   "author": "",

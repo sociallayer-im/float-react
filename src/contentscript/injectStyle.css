@@ -20,6 +20,58 @@
     transform: translate(-50%, -50%);
 }
 
+.float-twitter-avatar-popup  .lens-profile {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.float-twitter-avatar-popup  .lens-profile .info {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.float-twitter-avatar-popup  .lens-profile .info .avatar {
+    width: 39px;
+    height: 39px;
+    border-radius: 80px;
+    margin-right: 12px;
+}
+
+.float-twitter-avatar-popup  .lens-profile .info .name-info .name {
+    color: #000;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.float-twitter-avatar-popup  .lens-profile .info .name-info .handle {
+    --tw-gradient-stops: #7c3aed, #db2777;
+    color: transparent;
+    font-size: 12px;
+    line-height: 18px;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to right,var(--tw-gradient-stops));
+}
+
+.float-twitter-avatar-popup  .lens-profile  .lens-follow-btn {
+    width: 44px;
+    height: 27px;
+    border: 1px solid #8362EE;
+    border-radius: 8px;
+    text-decoration: none;
+    position: relative;
+}
+
+.float-twitter-avatar-popup  .lens-profile  .lens-follow-btn svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .float-twitter-avatar-popup .sola-profile {
     display: flex;
     flex-flow: row nowrap;
@@ -184,6 +236,7 @@ div[data-testid=tweetText]:hover .sola-presend-card {
     font-size: 16px;
     font-weight: 600;
     margin-top: 20px;
+    color: #000;
 }
 
 .sola-presend-card .inner .err-msg {
@@ -191,3 +244,248 @@ div[data-testid=tweetText]:hover .sola-presend-card {
     color: red;
     text-align: center;
 }
+
+.lens-post-btn {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    padding: 12px 16px;
+    align-items: center;
+    font-weight: 700;
+    cursor: pointer;
+    color: rgb(15,20,25);
+    font-size: 15px;
+}
+
+.lens-post-btn:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.lens-post-btn > img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.solas-lens-preview-in-twtter-profile {
+    display: flex;
+    padding: 0 16px;
+    flex-flow: row nowrap;
+}
+
+.solas-lens-preview-in-twtter-profile .item {
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+    align-items: center;
+    margin-right: 33px;
+    cursor: pointer;
+}
+
+.solas-lens-preview-in-twtter-profile .item .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    position: relative;
+    margin-right: 8px;
+}
+
+.solas-lens-preview-in-twtter-profile .item .logo img {
+    width: 20px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    transform: translate(-50%, -50%);
+}
+
+.solas-lens-preview-in-twtter-profile .item.solas .logo {
+    background: #EEFCF6;
+}
+
+.solas-lens-preview-in-twtter-profile .item.lans .logo {
+    background: #ECEAFD;
+}
+
+.solas-lens-preview-in-twtter-profile .item .solas-preview {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    display: none;
+}
+
+.solas-lens-preview-in-twtter-profile .item:hover .solas-preview {
+    display: block;
+}
+
+.solas-lens-preview-in-twtter-profile .item.solas .name {
+    font-size: 14px;
+    color: #489BEA
+}
+
+.solas-lens-preview-in-twtter-profile .item.lans .name {
+    background: linear-gradient(90deg, #833CE0 0%, #E32579 114.88%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-size: 14px;
+}
+
+
+.solas-preview {
+    width: 230px;
+    min-height: 185px;
+    background: #fff;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 99;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.solas-preview  >.bg{
+    width: 230px;
+    height: 72px;
+    background: linear-gradient(180deg, #D3FFF0 0%, rgba(158, 254, 221, 0) 100%);
+    border-radius: 12px 12px 0 0;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 1;
+}
+
+.solas-preview  .view-btn {
+    width: 90px;
+    height: 27px;
+    border: 1px solid #9EFEDD;
+    border-radius: 33px;
+    line-height: 27px;
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    font-size: 12px;
+    color: #101418;
+    text-decoration: none;
+    margin: 17px auto 37px auto;
+}
+
+.solas-preview  >.avatar {
+    display: block;
+    margin: 19px auto 6px auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    z-index: 2;
+    position: relative;
+}
+
+.solas-preview  >.userName {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: #101418;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    margin-bottom: 4px;
+}
+
+.solas-preview  >.domain {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    text-decoration-line: underline;
+    color: #329BFF;
+    text-align: center;
+    display: block;
+    z-index: 2;
+    position: relative;
+}
+
+.solas-preview  .badge-list {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.solas-preview  .badge-list .badge-show-item {
+    height: 38px;
+    width: 38px;
+    max-width: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 6px;
+    overflow: hidden;
+}
+
+.solas-preview  .badge-list .badge-show-item img {
+    height: 38px;
+    width: 38px;
+    max-width: 38px;
+    min-width: 38px;
+    display: block;
+}
+
+.solas-preview .footer-mark {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #F6F6F6;
+    text-align: center;
+    height: 24px;
+    width: 100%;
+}
+
+.solas-preview .footer-mark img {
+    width: auto;
+    height: 24px;
+}
+
+.solas-preview.lens .userId{
+    background: linear-gradient(90deg, #833CE0 0%, #E32579 114.88%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin-bottom: 7px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.solas-preview.lens .view-btn {
+    width: 110px;
+    height: 27px;
+    border: 1px solid #8362EE;
+    color: #8362EE
+}
+
+.solas-preview.lens .bg {
+    width: 230px;
+    height: 72px;
+    background: linear-gradient(180deg, #e0d7ff 0%, rgba(158, 254, 221, 0) 100%);
+    border-radius: 12px 12px 0 0;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 1;
+}
+
+.solas-preview.lens .bio {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 15px;
+    color: #566470;
+    text-align: center;
+}
+
+.solas-preview.lens >.avatar {
+    margin-top: 47px;
+    border: 2px solid #fff;
+}
+
+

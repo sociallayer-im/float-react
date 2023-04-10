@@ -7,8 +7,8 @@ async function process () {
     await copy('./manifest.json', './dist/manifest.json')
     await copy('./src/assets/icons', './dist/icons')
     await copy('./src/assets/images', './dist/images')
+    await copy('./src/assets/scripts', './dist/scripts')
     await copy('./src/popup/popup.html', './dist/popup.html')
-    await copy('./src/animation', './dist/animation')
 }
 
 process()

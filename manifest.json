@@ -1,7 +1,8 @@
 {
   "name": "Float",
-  "version": "1.0",
-  "description": "A Sociallayer Extension.",
+  "version": "1.0.0",
+  "description": "The Web3 social extension to view and collect NFTs, show profiles, and explore social graphs.",
+  "homepage_url": "https://app.sociallayer.im/",
   "content_security_policy": {
     "extension_page" : "script-src 'self' 'unsafe-eval'; object-src 'self'"
   },
@@ -42,10 +43,9 @@
     }
   ],
   "permissions": ["tabs", "activeTab", "storage"],
-  "homepage_url": "https://app.sociallayer.im/",
   "web_accessible_resources": [
     {
-      "resources": ["assets/*", "images/*", "icons/*", "animation/*/**"],
+      "resources": ["assets/*", "images/*", "icons/*", "scripts/lens.js", "animation/*/**"],
       "matches": [
         "https://*.twitter.com/*"
       ]

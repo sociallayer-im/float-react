@@ -126,6 +126,7 @@ body {
     top:0;
     width: 100%;
     height: 100%;
+    z-index: 99;
 }
 
 #profile-view .profile-dropdown .dropdown-list .content {
@@ -299,13 +300,16 @@ body {
 #profile-view .badge-show .badge-show-item {
     width: 50px;
     height: 50px;
+    max-width: 50px;
+    min-width: 50px;
     border-radius: 50%;
     margin-right: 16px;
     overflow: hidden;
 }
 
 #profile-view .badge-show .badge-show-item img {
-    width: 50px;
+    max-width: 50px;
+    min-width: 50px;
     height: 50px;
     display: block;
 }

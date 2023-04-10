@@ -236,6 +236,7 @@ div[data-testid=tweetText]:hover .sola-presend-card {
     font-size: 16px;
     font-weight: 600;
     margin-top: 20px;
+    color: #000;
 }
 
 .sola-presend-card .inner .err-msg {
@@ -414,6 +415,8 @@ div[data-testid=tweetText]:hover .sola-presend-card {
 .solas-preview  .badge-list .badge-show-item {
     height: 38px;
     width: 38px;
+    max-width: 38px;
+    min-width: 38px;
     border-radius: 50%;
     display: block;
     margin: 0 6px;
@@ -423,6 +426,8 @@ div[data-testid=tweetText]:hover .sola-presend-card {
 .solas-preview  .badge-list .badge-show-item img {
     height: 38px;
     width: 38px;
+    max-width: 38px;
+    min-width: 38px;
     display: block;
 }
 
